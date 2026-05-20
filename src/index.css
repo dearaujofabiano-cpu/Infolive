@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Geist:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+:root {
+  --bg: #0A0C10;
+  --surface: #111318;
+  --surface-low: #161B22;
+  --surface-container: #1e2024;
+  --surface-high: #282a2e;
+  --surface-highest: #333539;
+  --surface-lowest: #0c0e12;
+  --border: #30363D;
+  --border-variant: #5d3f3f;
+  --primary: #ffb3b3;
+  --primary-container: #ea083d;
+  --on-primary-container: #fffeff;
+  --secondary: #c1c6da;
+  --secondary-container: #414657;
+  --on-secondary-container: #b0b4c8;
+  --tertiary: #00daf3;
+  --on-surface: #e2e2e8;
+  --on-surface-variant: #e7bcbc;
+  --available: #00C853;
+  --warning: #FFD600;
+  --critical: #EA083D;
+  --outline: #ae8787;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Geist', sans-serif;
+  background: var(--bg);
+  color: var(--on-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-sora { font-family: 'Sora', sans-serif; }
+.font-mono-data { font-family: 'Geist', monospace; letter-spacing: -0.01em; }
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+}
+.fill-icon { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Glass */
+.glass { background: rgba(22,27,34,.85); backdrop-filter: blur(12px); border: 1px solid var(--border); }
+.glass-card { background: rgba(22,27,34,.8); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 12px; }
+
+/* Status dots */
+.dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.dot-avail { background: var(--available); box-shadow: 0 0 6px rgba(0,200,83,.5); }
+.dot-warn { background: var(--warning); box-shadow: 0 0 6px rgba(255,214,0,.5); }
+.dot-crit { background: var(--critical); box-shadow: 0 0 6px rgba(234,8,61,.5); }
+
+/* Pulse */
+@keyframes pulse-badge { 0%,100%{opacity:1} 50%{opacity:.65} }
+.pulse { animation: pulse-badge 2s infinite; }
+
+/* Nav hover effect */
+.nav-item { border-left: 2px solid transparent; transition: all .15s; }
+.nav-item:hover { background: var(--surface-high); color: var(--on-surface); }
+.nav-item.active { background: var(--secondary-container); color: var(--on-secondary-container); }
+
+/* Table row hover */
+.tr-hover { transition: background .12s; cursor: pointer; }
+.tr-hover:hover td { background: rgba(40,42,46,.5); }
+.tr-hover:hover { border-left: 2px solid var(--primary); }
+
+/* Bento card hover */
+.bento-card { transition: border-color .2s; }
+.bento-card:hover { border-color: var(--tertiary) !important; }
+
+/* FAB */
+.fab {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 52px; height: 52px;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  border-radius: 50%; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(234,8,61,.35);
+  z-index: 40; transition: transform .2s;
+}
+.fab:hover { transform: scale(1.08); }
+
+/* Progress bar */
+.prog-track { height: 5px; background: var(--surface-lowest); border-radius: 3px; overflow: hidden; }
+.prog-fill { height: 100%; border-radius: 3px; }
+
+/* Chip */
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--secondary-container); color: var(--on-secondary-container); padding: 3px 9px; border-radius: 20px; font-size: 11px; border: 1px solid rgba(65,70,87,.7); }
+
+/* Confirm animation */
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.slide-down { animation: slideDown .25s ease; }
