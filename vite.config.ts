@@ -1,8 +1,19 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  build: { outDir: 'dist', chunkSizeWarningLimit: 2000 }
+  root: 'public',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        index: 'public/index.html',
+        login: 'public/login.html',
+        dashboard: 'public/dashboard.html',
+        inventory: 'public/inventory.html',
+        movements: 'public/movements.html',
+      }
+    }
+  },
+  publicDir: false,
 })

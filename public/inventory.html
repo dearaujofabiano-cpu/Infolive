@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>InfoLive Brasil - Inventory Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b0b4c8",
+                        "primary": "#ffb3b3",
+                        "on-background": "#e2e2e8",
+                        "on-surface-variant": "#e7bcbc",
+                        "background": "#111318",
+                        "secondary-container": "#414657",
+                        "on-tertiary": "#00363d",
+                        "on-tertiary-container": "#feffff",
+                        "outline": "#ae8787",
+                        "tertiary-container": "#008291",
+                        "status-warning": "#FFD600",
+                        "surface-tint": "#ffb3b3",
+                        "tertiary": "#00daf3",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container": "#1e2024",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary": "#680015",
+                        "surface-container-low": "#1a1c20",
+                        "secondary-fixed": "#dee2f7",
+                        "on-secondary-fixed": "#161b2a",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "outline-variant": "#5d3f3f",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "status-critical": "#EA083D",
+                        "primary-fixed-dim": "#ffb3b3",
+                        "primary-container": "#ea083d",
+                        "surface-container-high": "#282a2e",
+                        "on-primary-container": "#fffeff",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "secondary": "#c1c6da",
+                        "surface-elevated": "#161B22",
+                        "border-subtle": "#30363D",
+                        "surface-bright": "#37393e",
+                        "inverse-primary": "#bf002f",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-highest": "#333539",
+                        "on-primary-fixed": "#400009",
+                        "error": "#ffb4ab",
+                        "status-available": "#00C853",
+                        "on-surface": "#e2e2e8",
+                        "surface-variant": "#333539",
+                        "surface": "#111318",
+                        "on-secondary-fixed-variant": "#414657",
+                        "secondary-fixed-dim": "#c1c6da",
+                        "primary-fixed": "#ffdad9",
+                        "on-primary-fixed-variant": "#920022",
+                        "tertiary-fixed": "#9cf0ff",
+                        "on-tertiary-fixed": "#001f24",
+                        "surface-dim": "#111318",
+                        "on-secondary": "#2b3040"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "24px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "4px",
+                        "stack-md": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Sora"],
+                        "body-lg": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-md": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "mono-data": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "mono-data": ["14px", {"lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0C10;
+            color: #e2e2e8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(17, 19, 24, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0A0C10; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #30363D; border-radius: 2px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md custom-scrollbar">
+<!-- TopAppBar -->
+<header style="display:none" class="fixed top-0 w-full z-50 glass-header border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-lg">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">InfoLive Brasil</h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-xl mx-8 relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-border-subtle rounded-lg py-2 pl-10 pr-4 focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body-sm text-body-sm text-on-surface" placeholder="Command-K to search equipment..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1 items-center pointer-events-none">
+<span class="px-1.5 py-0.5 rounded border border-outline-variant text-[10px] bg-surface-container-high text-on-surface-variant">⌘</span>
+<span class="px-1.5 py-0.5 rounded border border-outline-variant text-[10px] bg-surface-container-high text-on-surface-variant">K</span>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border-subtle bg-surface-container-low hover:bg-surface-container-high transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="font-label-md text-label-md">EXPORT</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAhqZ7FK_BGu_JMO4fmV-jiWPRKlkNnzzsPNsq8xw1-sl61qVBtK4UfiA_nZqvkZMVuCSD0ftYIEvHJrVLuVER7ggoLc0uuy4Dsn30yxQJY_V81obuzlMbKMNRSfYibpP6fs9s4E1YlGjOOBXPOBFynOHEf-_OhuwHlhPY72_epQ41pOD73Rt5LO-Nqy3x93MMpcLRRwrJpDhRZO4GyoaN9W1jf0ukzAd0AgTWg5v93HJYPJaIQFxwwt1jdnlBDIRcq_oI3W6J8VA"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Sidebar Desktop) -->
+<aside class="hidden md:flex h-full w-[280px] fixed left-0 top-0 z-[40] pt-4 bg-surface-container-low border-r border-outline-variant flex-col gap-stack-md p-gutter">
+<div class="flex flex-col gap-2 mb-stack-lg">
+<p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Main Menu</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="font-body-md text-body-md">Movements</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2 mt-auto pb-gutter">
+<p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Administration</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Checkout History</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="font-body-md text-body-md">Maintenance Log</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] pt-4 pb-20 md:pb-8 px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Dashboard Header & Quick Stats -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Inventory Overview</h2>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">Manage and track your high-performance production gear.</p>
+</div>
+<div class="flex gap-stack-md items-center overflow-x-auto no-scrollbar py-1">
+<button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container-high border border-primary text-primary font-label-md text-label-md flex items-center gap-2">
+                    ALL
+                </button>
+<button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-primary transition-colors">
+                    CAMERAS
+                </button>
+<button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-primary transition-colors">
+                    AUDIO
+                </button>
+<button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-primary transition-colors">
+                    LIGHTING
+                </button>
+</div>
+</div>
+<!-- Filter & Utility Bar -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-stack-md mb-stack-lg">
+<div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest mb-1">Total Assets</span>
+<span class="text-headline-md font-headline-md text-primary">1,284</span>
+</div>
+<div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
+<span class="text-status-available text-[10px] uppercase font-bold tracking-widest mb-1">Available</span>
+<span class="text-headline-md font-headline-md text-status-available">942</span>
+</div>
+<div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
+<span class="text-status-warning text-[10px] uppercase font-bold tracking-widest mb-1">In Use</span>
+<span class="text-headline-md font-headline-md text-status-warning">312</span>
+</div>
+<div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
+<span class="text-status-critical text-[10px] uppercase font-bold tracking-widest mb-1">Maintenance</span>
+<span class="text-headline-md font-headline-md text-status-critical">30</span>
+</div>
+</div>
+<!-- Inventory List (Table/Grid Hybrid) -->
+<div class="bg-surface-elevated border border-border-subtle rounded-xl overflow-hidden mb-stack-lg">
+<!-- Table Header -->
+<div class="hidden md:grid grid-cols-12 gap-gutter px-gutter py-4 bg-surface-container-high border-b border-border-subtle font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-5">Equipment / Serial</div>
+<div class="col-span-2">Category</div>
+<div class="col-span-2">Status</div>
+<div class="col-span-2 text-center">In Stock</div>
+<div class="col-span-1 text-right">Actions</div>
+</div>
+<!-- List Items -->
+<div class="divide-y divide-border-subtle">
+<!-- Item 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A professional high-end cinema camera body with matte black finish and intricate technical dials, resting on a dark velvet surface. The lighting is cinematic and low-key with sharp highlights, reflecting the InfoLive Brasil professional dark theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPS8f5OCWU5BL-PBM1mvoy7g2LzfEV8ut9PaJUub2bpwaYuc4RWS5WpNU8TQjEmVjdS5ojn4WhFeQRrSNLe-RfFKGjMKMQBJcLVRzDZDA-1WGPWUsG75Svz7-zTw5Z60pC5siWx1JO-HNOpgyqkbvJ2Nz8A1DSNc_MD6BKNWOngKP8UhQS3o1fTdpC9ZKRzZaFIG9iGtmeTJsSH6_uRkrlc3Bv3PffYvlMjxUbxX_KKxHgfG1gJXCV-ShqxLJVeu6prqT1wWGvrdc"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Arri Alexa Mini LF</h3>
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">SN: AR-90214-X</span>
+</div>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">CAMERAS</span>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-available shadow-[0_0_8px_rgba(0,200,83,0.6)]"></span>
+<span class="text-status-available font-label-md text-label-md">AVAILABLE</span>
+</div>
+</div>
+<div class="col-span-2 text-center md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Count:</span>
+<span class="font-mono-data text-mono-data">12 / 15</span>
+</div>
+<div class="col-span-1 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Professional cardioid condenser microphone with a mesh pop filter, positioned in a high-tech studio environment with dark blue and red ambient lighting. Minimalist aesthetic, high-contrast, professional stock inventory photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3m1D1wDujPfR-e-CCygL8V6Cf2lGyd5PbapdUOBrFInPw299HcfccUhzA2laP_Q3i1kWe3MDpBFK2O-iL7pTx9YfG6yNG0PQbSLBuyIICO-mBsJuvOf_EtHFs9HEcylJSzCBw9B9anGMq4lpI4MoBuQ0QhidqzsFoOhoAOvfdFtgFMntZFBFS0zWMQWVTkg26rTfMlXfVnmJA_i9_SgmHn1PuN9lzMfxD3Um2mVziTPgl__N3rah5prSX92jP0-FBIZxd-FNmomo"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Sennheiser MKH 416</h3>
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">SN: SEN-7731-M</span>
+</div>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">AUDIO</span>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-warning shadow-[0_0_8px_rgba(255,214,0,0.6)]"></span>
+<span class="text-status-warning font-label-md text-label-md">IN USE</span>
+</div>
+</div>
+<div class="col-span-2 text-center md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Count:</span>
+<span class="font-mono-data text-mono-data">0 / 8</span>
+</div>
+<div class="col-span-1 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A large studio LED panel light with barn doors, glowing with a soft daylight temperature. The background is a dark production stage. The image has a clean, professional, industrial look with deep shadows and sharp edge lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFrkYeqXVA6vUf04KwW6cHya8IoeIvbfjstMSPBenCwTejiimg7OdfXZ7ZZqBL6afe3bNpq_SjFUUtl1UzWYnGurZyQzImTvsV78-M_TBEq_nxp3DrVkvagyZSlep8u-L7YjcImQSPCVL17WNJcKYEXcpu5pTc8q2ZKN4CJ0nCA3tfcTEgZwI-ETq94-9OyjOuX3JMQju4y_pT1IbOfGiDRWqhkVGfG9ZrDx67shcxQlb3qQy73HAWJFm9Ik9d-EoqkA-SvX27FEg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Aputure LS 600d Pro</h3>
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">SN: AP-LIT-600-X</span>
+</div>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">LIGHTING</span>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-critical shadow-[0_0_8px_rgba(234,8,61,0.6)]"></span>
+<span class="text-status-critical font-label-md text-label-md uppercase">Maintenance</span>
+</div>
+</div>
+<div class="col-span-2 text-center md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Count:</span>
+<span class="font-mono-data text-mono-data">3 / 24</span>
+</div>
+<div class="col-span-1 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+<!-- Item 4 (Mobile view demonstration) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A ruggedized professional field monitor for film production with multiple cable ports visible on the side. The screen shows a color calibration pattern. The environment is dark, emphasizing the metallic textures and professional build quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKv2aOeAVJQSHRoOTPmD3kfeenaA67J1uIWO2OQJspCtBbNNuXFqhQlQCzH8F6AIEwedC12E0zcwp2BiuZtcHvj4-xZCre1_fEXP9AOMy_7x0aZ7XDalURTOAjDuE34J9pOLRPdN0drUw_ldWPqqI35-WBEghuDnj7Ob24_VFkbe6UkmrEli6it3_J5D_5ruOsKGGfXS5_zfL7EcrVWFOECxemNKrVFCMW-TBd877qOvLwGjewN2aNtWQAxfXgDkO9Ctato49dCcA"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">SmallHD 703 UltraBright</h3>
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">SN: SM-HD-V8-K</span>
+</div>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">ACCESSORIES</span>
+</div>
+<div class="col-span-2 md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-available shadow-[0_0_8px_rgba(0,200,83,0.6)]"></span>
+<span class="text-status-available font-label-md text-label-md">AVAILABLE</span>
+</div>
+</div>
+<div class="col-span-2 text-center md:block flex justify-between items-center">
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Count:</span>
+<span class="font-mono-data text-mono-data">18 / 20</span>
+</div>
+<div class="col-span-1 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Footer Actions -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<p class="text-on-surface-variant font-body-sm text-body-sm">Showing 4 of 1284 items</p>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded border border-border-subtle hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="px-4 py-1.5 rounded bg-primary-container text-on-primary-container font-bold text-label-md">1</span>
+<button class="px-4 py-1.5 rounded border border-border-subtle text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">2</button>
+<button class="px-4 py-1.5 rounded border border-border-subtle text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">3</button>
+<button class="p-2 rounded border border-border-subtle hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="hidden fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant flex justify-around items-center h-16 px-margin-mobile w-full">
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="font-label-md text-label-md">Movements</span>
+</button>
+</nav>
+<!-- FAB (Floating Action Button) -->
+<button class="fixed bottom-20 md:bottom-10 right-6 w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-[32px]">add</span>
+<span class="absolute right-16 bg-surface-container-high border border-border-subtle px-3 py-1.5 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest">Add Equipment</span>
+</button>
+<script>
+        // Simple Interaction: Command-K shortcut simulation
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                document.querySelector('input[type="text"]').focus();
+            }
+        });
+
+        // Hover Effect Micro-interaction
+        const items = document.querySelectorAll('.hover\\:bg-surface-container');
+        items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.borderLeft = '2px solid #ffb3b3';
+                item.style.paddingLeft = 'calc(var(--gutter) - 2px)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.borderLeft = '0';
+                item.style.paddingLeft = 'var(--gutter)';
+            });
+        });
+    </script>
+</body></html>

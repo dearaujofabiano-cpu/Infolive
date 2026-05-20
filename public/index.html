@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>InfoLive Brasil — LensCtrl</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23EA083D'/><text y='.88em' font-size='72' x='13'>🎥</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;background:#0A0C10;}
+
+/* NAV TAB BAR — sobreposto no topo das iframes */
+#nav-bar{
+  position:fixed;top:0;left:0;right:0;height:48px;
+  background:rgba(10,12,16,0.96);
+  border-bottom:1px solid #30363D;
+  display:flex;align-items:center;
+  padding:0 16px;
+  gap:4px;
+  z-index:9999;
+  backdrop-filter:blur(12px);
+}
+
+.nav-logo{
+  display:flex;align-items:center;gap:8px;margin-right:16px;
+  text-decoration:none;
+}
+.nav-logo-box{
+  background:#EA083D;padding:3px 8px;border-radius:4px;
+  font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#fff;letter-spacing:1px;
+}
+.nav-logo-name{
+  font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#ffb3b3;
+  display:none;
+}
+@media(min-width:640px){.nav-logo-name{display:block;}}
+
+.nav-sep{width:1px;height:24px;background:#30363D;margin:0 8px;}
+
+.nav-tab{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;
+  font-family:'Geist',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.04em;color:#b0b4c8;
+  border:none;background:transparent;cursor:pointer;
+  transition:all .15s;white-space:nowrap;
+}
+.nav-tab .mi{
+  font-family:'Material Symbols Outlined';
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 20;
+  font-size:16px;line-height:1;vertical-align:middle;
+}
+.nav-tab:hover{background:#1e2024;color:#e2e2e8;}
+.nav-tab.active{background:#414657;color:#b0b4c8;}
+.nav-tab.active .mi{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20;}
+
+/* Badge de alerta no tab */
+.nav-badge{
+  background:#EA083D;color:#fff;
+  font-size:9px;font-weight:700;
+  padding:1px 5px;border-radius:10px;
+  line-height:1.4;
+}
+
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.nav-version{
+  font-family:'Geist',monospace;font-size:10px;color:#5d5d7a;
+  letter-spacing:0.05em;padding:3px 8px;
+  border:1px solid #30363D;border-radius:4px;
+}
+.nav-avatar{
+  width:28px;height:28px;border-radius:50%;
+  background:#414657;border:1px solid #30363D;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-size:10px;font-weight:700;color:#ffb3b3;
+}
+
+/* IFRAME CONTAINER */
+#frame-wrap{
+  position:fixed;top:48px;left:0;right:0;bottom:0;
+}
+.frame-page{
+  position:absolute;inset:0;
+  border:none;width:100%;height:100%;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s ease;
+}
+.frame-page.active{
+  opacity:1;pointer-events:auto;
+}
+
+/* Powered by badge */
+#powered{
+  position:fixed;bottom:12px;right:16px;
+  font-family:'Geist',sans-serif;font-size:10px;
+  color:rgba(177,180,200,0.35);letter-spacing:0.05em;
+  z-index:9999;pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV BAR PRINCIPAL -->
+<div id="nav-bar">
+  <a class="nav-logo" href="#" onclick="showPage('login');return false;">
+    <div class="nav-logo-box">INFOLIVE</div>
+    <span class="nav-logo-name">Brasil</span>
+  </a>
+  <div class="nav-sep"></div>
+
+  <button class="nav-tab" id="tab-login" onclick="showPage('login')">
+    <span class="mi">login</span>
+    <span>Login</span>
+  </button>
+
+  <button class="nav-tab" id="tab-dashboard" onclick="showPage('dashboard')">
+    <span class="mi">dashboard</span>
+    <span>Dashboard</span>
+    <span class="nav-badge">08</span>
+  </button>
+
+  <button class="nav-tab" id="tab-inventory" onclick="showPage('inventory')">
+    <span class="mi">inventory_2</span>
+    <span>Inventory</span>
+  </button>
+
+  <button class="nav-tab" id="tab-movements" onclick="showPage('movements')">
+    <span class="mi">sync_alt</span>
+    <span>Movements</span>
+  </button>
+
+  <div class="nav-right">
+    <span class="nav-version">v1.0.4-LATEST</span>
+    <div class="nav-avatar">LG</div>
+  </div>
+</div>
+
+<!-- IFRAMES — cada tela original do ZIP -->
+<div id="frame-wrap">
+  <iframe class="frame-page" id="frame-login"     src="login.html"     title="Login"></iframe>
+  <iframe class="frame-page" id="frame-dashboard" src="dashboard.html" title="Dashboard"></iframe>
+  <iframe class="frame-page" id="frame-inventory" src="inventory.html" title="Inventory"></iframe>
+  <iframe class="frame-page" id="frame-movements" src="movements.html" title="Movements"></iframe>
+</div>
+
+<div id="powered">Powered by Force Training</div>
+
+<script>
+let current = 'login';
+
+function showPage(name) {
+  // Desativa todos
+  document.querySelectorAll('.frame-page').forEach(f => f.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+  // Ativa o escolhido
+  document.getElementById('frame-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  current = name;
+}
+
+// Iniciar no login
+showPage('login');
+
+// Escuta mensagens dos iframes (para navegação interna)
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.navigate) showPage(e.data.navigate);
+});
+
+// Keyboard shortcut: Cmd+K foca search dentro do frame ativo
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    const frame = document.getElementById('frame-' + current);
+    try {
+      const input = frame.contentDocument.querySelector('input[type="text"]');
+      if (input) input.focus();
+    } catch(_) {}
+  }
+});
+</script>
+</body>
+</html>
