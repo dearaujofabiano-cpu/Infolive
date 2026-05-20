@@ -3,7 +3,7 @@
 <html class="dark" lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Login | InfoLive Brasil Inventory</title>
+<title>Entrar | InfoLive Brasil — LensCtrl</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -131,16 +131,16 @@
 <div class="mb-stack-lg flex flex-col items-center">
 <img alt="InfoLive Logo" class="h-16 w-auto mb-stack-md object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiVdZUbCUt57HAY54UNCQoMrrXToJjrrxn4DmncbJ1x7mQDLOoAUo_CQ1iWJh9A4SMIFgSzpO33uQsNKjxD2gh8aeHqgQkivg4l3CzdeVmTeh6HjqV3rzX3pve-5oImFeFZcFbZYPbi3hzqulkUrqcu_GS9kts23iSoLKBowo1dvWgqCQZTxJToBSWMcOHRDGwG48xuNleJV3NXVnXlIypfVI5VDOqxBw2ipfzCImsMThj1iNWiKSrBEfY"/>
 <h1 class="font-headline-md text-headline-md text-center text-primary-fixed-dim">
-                    Inventory Management
+                    Gestão de Equipamentos
                 </h1>
 <p class="font-label-md text-label-md text-on-surface-variant tracking-widest uppercase mt-stack-sm">
                     Cinematic Utility Suite
                 </p>
 </div>
-<!-- Login Form -->
+<!-- Entrar Form -->
 <form class="w-full space-y-stack-lg" id="login-form" onsubmit="event.preventDefault(); try { window.parent.postMessage({navigate:'dashboard'},'*'); } catch(e){} ">
 <div class="space-y-stack-sm">
-<label class="font-label-md text-label-md text-secondary ml-1" for="employee-id">EMPLOYEE ID</label>
+<label class="font-label-md text-label-md text-secondary ml-1" for="employee-id">ID DO FUNCIONÁRIO</label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-stack-md text-on-surface-variant pointer-events-none">badge</span>
 <input class="w-full h-12 bg-surface-container-lowest border border-border-subtle rounded-lg pl-12 pr-stack-md text-on-background font-mono-data focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-all outline-none" id="employee-id" placeholder="IL-000000" required="" type="text"/>
@@ -148,8 +148,8 @@
 </div>
 <div class="space-y-stack-sm">
 <div class="flex justify-between items-center">
-<label class="font-label-md text-label-md text-secondary ml-1" for="password">PASSWORD</label>
-<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">Forgot?</a>
+<label class="font-label-md text-label-md text-secondary ml-1" for="password">SENHA</label>
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">Esqueceu?</a>
 </div>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-stack-md text-on-surface-variant pointer-events-none">lock</span>
@@ -162,11 +162,11 @@
 <!-- Remember me -->
 <div class="flex items-center space-x-stack-md">
 <input class="w-4 h-4 rounded-sm bg-surface-container-low border-border-subtle text-primary-container focus:ring-primary-container" id="remember" type="checkbox"/>
-<label class="font-body-sm text-body-sm text-on-surface-variant select-none" for="remember">Remember this device</label>
+<label class="font-body-sm text-body-sm text-on-surface-variant select-none" for="remember">Lembrar este dispositivo</label>
 </div>
 <!-- Primary Action -->
 <button class="w-full h-14 bg-primary-container text-on-primary-container font-headline-md text-headline-md rounded-lg flex items-center justify-center gap-stack-md hover:brightness-110 active:scale-[0.98] transition-all duration-200" type="submit">
-<span>Login</span>
+<span>Entrar</span>
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
 </form>
@@ -174,7 +174,7 @@
 <div class="mt-stack-lg pt-stack-lg border-t border-border-subtle w-full flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
 <div class="flex items-center gap-1">
 <span class="w-2 h-2 rounded-full bg-status-available"></span>
-<span>System Online</span>
+<span>Sistema Online</span>
 </div>
 <span>v1.0.4-LATEST</span>
 </div>

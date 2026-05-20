@@ -3,7 +3,7 @@
 <html class="dark" lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>InfoLive Brasil - Inventory Control</title>
+<title>InfoLive Brasil — Controle de Inventário</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -140,7 +140,7 @@
 </div>
 <div class="hidden md:flex flex-1 max-w-xl mx-8 relative group">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full bg-surface-container-lowest border border-border-subtle rounded-lg py-2 pl-10 pr-4 focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body-sm text-body-sm text-on-surface" placeholder="Command-K to search equipment..." type="text"/>
+<input class="w-full bg-surface-container-lowest border border-border-subtle rounded-lg py-2 pl-10 pr-4 focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body-sm text-body-sm text-on-surface" placeholder="Buscar equipamento... (⌘K)" type="text"/>
 <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1 items-center pointer-events-none">
 <span class="px-1.5 py-0.5 rounded border border-outline-variant text-[10px] bg-surface-container-high text-on-surface-variant">⌘</span>
 <span class="px-1.5 py-0.5 rounded border border-outline-variant text-[10px] bg-surface-container-high text-on-surface-variant">K</span>
@@ -159,7 +159,7 @@
 <!-- NavigationDrawer (Sidebar Desktop) -->
 <aside class="hidden md:flex h-full w-[280px] fixed left-0 top-0 z-[40] pt-4 bg-surface-container-low border-r border-outline-variant flex-col gap-stack-md p-gutter">
 <div class="flex flex-col gap-2 mb-stack-lg">
-<p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Main Menu</p>
+<p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Menu Principal</p>
 <nav class="flex flex-col gap-1">
 <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
 <span class="material-symbols-outlined">dashboard</span>
@@ -167,28 +167,28 @@
 </a>
 <a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full font-bold" href="#">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-<span class="font-body-md text-body-md">Inventory</span>
+<span class="font-body-md text-body-md">Inventário</span>
 </a>
 <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
 <span class="material-symbols-outlined">sync_alt</span>
-<span class="font-body-md text-body-md">Movements</span>
+<span class="font-body-md text-body-md">Movimentações</span>
 </a>
 </nav>
 </div>
 <div class="flex flex-col gap-2 mt-auto pb-gutter">
-<p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Administration</p>
+<p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Administração</p>
 <nav class="flex flex-col gap-1">
 <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
 <span class="material-symbols-outlined">history</span>
-<span class="font-body-md text-body-md">Checkout History</span>
+<span class="font-body-md text-body-md">Histórico de Saídas</span>
 </a>
 <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
 <span class="material-symbols-outlined">build</span>
-<span class="font-body-md text-body-md">Maintenance Log</span>
+<span class="font-body-md text-body-md">Log de Manutenção</span>
 </a>
 <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
 <span class="material-symbols-outlined">settings</span>
-<span class="font-body-md text-body-md">Settings</span>
+<span class="font-body-md text-body-md">Configurações</span>
 </a>
 </nav>
 </div>
@@ -198,52 +198,52 @@
 <!-- Dashboard Header & Quick Stats -->
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-on-background">Inventory Overview</h2>
-<p class="text-on-surface-variant font-body-md text-body-md mt-1">Manage and track your high-performance production gear.</p>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Inventário Overview</h2>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">Gerencie e rastreie todo o equipamento de produção.</p>
 </div>
 <div class="flex gap-stack-md items-center overflow-x-auto no-scrollbar py-1">
 <button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container-high border border-primary text-primary font-label-md text-label-md flex items-center gap-2">
-                    ALL
+                    TODOS
                 </button>
 <button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-primary transition-colors">
-                    CAMERAS
+                    CÂMERAS
                 </button>
 <button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-primary transition-colors">
-                    AUDIO
+                    ÁUDIO
                 </button>
 <button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-primary transition-colors">
-                    LIGHTING
+                    ILUMINAÇÃO
                 </button>
 </div>
 </div>
 <!-- Filter & Utility Bar -->
 <div class="grid grid-cols-1 md:grid-cols-4 gap-stack-md mb-stack-lg">
 <div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
-<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest mb-1">Total Assets</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest mb-1">Total do Acervo</span>
 <span class="text-headline-md font-headline-md text-primary">1,284</span>
 </div>
 <div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
-<span class="text-status-available text-[10px] uppercase font-bold tracking-widest mb-1">Available</span>
+<span class="text-status-available text-[10px] uppercase font-bold tracking-widest mb-1">Disponível</span>
 <span class="text-headline-md font-headline-md text-status-available">942</span>
 </div>
 <div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
-<span class="text-status-warning text-[10px] uppercase font-bold tracking-widest mb-1">In Use</span>
+<span class="text-status-warning text-[10px] uppercase font-bold tracking-widest mb-1">Em Uso</span>
 <span class="text-headline-md font-headline-md text-status-warning">312</span>
 </div>
 <div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
-<span class="text-status-critical text-[10px] uppercase font-bold tracking-widest mb-1">Maintenance</span>
+<span class="text-status-critical text-[10px] uppercase font-bold tracking-widest mb-1">Manutenção</span>
 <span class="text-headline-md font-headline-md text-status-critical">30</span>
 </div>
 </div>
-<!-- Inventory List (Table/Grid Hybrid) -->
+<!-- Inventário List (Table/Grid Hybrid) -->
 <div class="bg-surface-elevated border border-border-subtle rounded-xl overflow-hidden mb-stack-lg">
 <!-- Table Header -->
 <div class="hidden md:grid grid-cols-12 gap-gutter px-gutter py-4 bg-surface-container-high border-b border-border-subtle font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
-<div class="col-span-5">Equipment / Serial</div>
-<div class="col-span-2">Category</div>
+<div class="col-span-5">Equipamento / Série</div>
+<div class="col-span-2">Categoria</div>
 <div class="col-span-2">Status</div>
-<div class="col-span-2 text-center">In Stock</div>
-<div class="col-span-1 text-right">Actions</div>
+<div class="col-span-2 text-center">Em Estoque</div>
+<div class="col-span-1 text-right">Ações</div>
 </div>
 <!-- List Items -->
 <div class="divide-y divide-border-subtle">
@@ -259,14 +259,14 @@
 </div>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
-<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
-<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">CAMERAS</span>
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Categoria:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">CÂMERAS</span>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
 <span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-status-available shadow-[0_0_8px_rgba(0,200,83,0.6)]"></span>
-<span class="text-status-available font-label-md text-label-md">AVAILABLE</span>
+<span class="text-status-available font-label-md text-label-md">DISPONÍVEL</span>
 </div>
 </div>
 <div class="col-span-2 text-center md:block flex justify-between items-center">
@@ -289,14 +289,14 @@
 </div>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
-<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
-<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">AUDIO</span>
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Categoria:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">ÁUDIO</span>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
 <span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-status-warning shadow-[0_0_8px_rgba(255,214,0,0.6)]"></span>
-<span class="text-status-warning font-label-md text-label-md">IN USE</span>
+<span class="text-status-warning font-label-md text-label-md">EM USO</span>
 </div>
 </div>
 <div class="col-span-2 text-center md:block flex justify-between items-center">
@@ -319,14 +319,14 @@
 </div>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
-<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
-<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">LIGHTING</span>
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Categoria:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">ILUMINAÇÃO</span>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
 <span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-status-critical shadow-[0_0_8px_rgba(234,8,61,0.6)]"></span>
-<span class="text-status-critical font-label-md text-label-md uppercase">Maintenance</span>
+<span class="text-status-critical font-label-md text-label-md uppercase">Manutenção</span>
 </div>
 </div>
 <div class="col-span-2 text-center md:block flex justify-between items-center">
@@ -349,14 +349,14 @@
 </div>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
-<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Category:</span>
-<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">ACCESSORIES</span>
+<span class="md:hidden text-[10px] uppercase text-on-surface-variant">Categoria:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label-md text-[10px]">ACESSÓRIOS</span>
 </div>
 <div class="col-span-2 md:block flex justify-between items-center">
 <span class="md:hidden text-[10px] uppercase text-on-surface-variant">Status:</span>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-status-available shadow-[0_0_8px_rgba(0,200,83,0.6)]"></span>
-<span class="text-status-available font-label-md text-label-md">AVAILABLE</span>
+<span class="text-status-available font-label-md text-label-md">DISPONÍVEL</span>
 </div>
 </div>
 <div class="col-span-2 text-center md:block flex justify-between items-center">
@@ -369,9 +369,9 @@
 </div>
 </div>
 </div>
-<!-- Pagination / Footer Actions -->
+<!-- Pagination / Footer Ações -->
 <div class="flex flex-col md:flex-row justify-between items-center gap-stack-md">
-<p class="text-on-surface-variant font-body-sm text-body-sm">Showing 4 of 1284 items</p>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Exibindo 4 de 1.284 itens</p>
 <div class="flex items-center gap-2">
 <button class="p-2 rounded border border-border-subtle hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
 <span class="material-symbols-outlined">chevron_left</span>
@@ -393,17 +393,17 @@
 </button>
 <button class="flex flex-col items-center justify-center text-primary font-bold active:scale-95 transition-transform duration-200">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-<span class="font-label-md text-label-md">Inventory</span>
+<span class="font-label-md text-label-md">Inventário</span>
 </button>
 <button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-200">
 <span class="material-symbols-outlined">sync_alt</span>
-<span class="font-label-md text-label-md">Movements</span>
+<span class="font-label-md text-label-md">Movimentações</span>
 </button>
 </nav>
 <!-- FAB (Floating Action Button) -->
 <button class="fixed bottom-20 md:bottom-10 right-6 w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group">
 <span class="material-symbols-outlined text-[32px]">add</span>
-<span class="absolute right-16 bg-surface-container-high border border-border-subtle px-3 py-1.5 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest">Add Equipment</span>
+<span class="absolute right-16 bg-surface-container-high border border-border-subtle px-3 py-1.5 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest">Adicionar Equipamento</span>
 </button>
 <script>
         // Simple Interaction: Command-K shortcut simulation
