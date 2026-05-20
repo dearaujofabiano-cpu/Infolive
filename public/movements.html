@@ -127,7 +127,54 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  </head>
+  <style>
+/* ── RESPONSIVE EXTRAS ── */
+@media (max-width: 767px) {
+  /* Sidebar never visible on mobile — content fills full width */
+  .md\:ml-\[280px\] { margin-left: 0 !important; }
+  .md\:flex { display: none !important; }
+
+  /* Bento cards full width stacking */
+  .glass-panel { border-radius: 0.5rem; }
+
+  /* Return item content */
+  .flex.flex-wrap.items-center.justify-between { gap: 0.5rem; }
+
+  /* Table cells — smaller text on mobile */
+  td { font-size: 12px !important; padding: 8px 10px !important; }
+  th { font-size: 9px !important; padding: 8px 10px !important; }
+
+  /* Headline XL — scale down on mobile */
+  .text-headline-xl, .font-headline-xl { font-size: 28px !important; line-height: 36px !important; }
+  .text-headline-lg { font-size: 20px !important; line-height: 28px !important; }
+
+  /* Grid col-12 items */
+  .col-span-5 { grid-column: span 12 !important; }
+  .col-span-2 { grid-column: span 6 !important; }
+  .col-span-1 { grid-column: span 6 !important; }
+
+  /* Form full width inputs */
+  input, select { font-size: 14px !important; }
+
+  /* Activity section */
+  .space-y-4 > * { margin-top: 0.75rem; }
+}
+
+@media (max-width: 479px) {
+  /* Very small screens */
+  .px-gutter { padding-left: 12px !important; padding-right: 12px !important; }
+  h2.font-headline-xl { font-size: 24px !important; }
+  .text-headline-md { font-size: 16px !important; }
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Smooth transitions */
+* { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
 <header style="display:none" class="fixed top-0 w-full z-50 bg-surface text-primary border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
@@ -147,7 +194,7 @@
 </header>
 <div class="flex pt-0 min-h-screen">
 <!-- Sidebar / NavigationDrawer -->
-<aside class="hidden lg:flex flex-col gap-stack-md p-gutter h-full w-[280px] fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant z-40">
+<aside class="hidden lg:flex flex-col gap-stack-md p-gutter h-full w-[280px] fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant z-40 overflow-y-auto">
 <div class="flex items-center gap-stack-md mb-6 p-2">
 <div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center">
 <span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
@@ -198,15 +245,15 @@
 </div>
 </aside>
 <!-- Main Content -->
-<main class="flex-1 lg:ml-[280px] p-4 md:p-gutter pb-24 lg:pb-8">
+<main class="flex-1 lg:ml-[280px] p-3 md:p-6 pb-24 lg:pb-8 overflow-x-hidden">
 <div class="max-w-container-max mx-auto space-y-stack-lg">
 <!-- Header Section -->
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 flex-wrap">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-on-background">Equipment Movimentações</h2>
+<h2 class="font-headline-lg text-xl md:text-headline-lg text-on-background">Equipment Movimentações</h2>
 <p class="text-on-surface-variant font-body-md">Registre saídas e monitore a circulação dos equipamentos em tempo real.</p>
 </div>
-<div class="flex gap-stack-md">
+<div class="flex gap-3 flex-wrap">
 <div class="bg-surface-elevated border border-border-subtle p-3 rounded-lg flex items-center gap-3">
 <div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center">
 <span class="material-symbols-outlined text-tertiary">outbound</span>
@@ -228,7 +275,7 @@
 </div>
 </div>
 <!-- Registration Grid -->
-<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
 <!-- Form Section (Bento Style) -->
 <section class="xl:col-span-8 space-y-gutter">
 <div class="glass-card rounded-xl p-gutter overflow-hidden relative">
@@ -239,7 +286,7 @@
 <span class="material-symbols-outlined text-primary">add_circle</span>
                                 Registrar Nova Saída
                             </h3>
-<form class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg relative z-10" id="checkout-form">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10" id="checkout-form">
 <!-- Team/Employee -->
 <div class="space-y-stack-sm">
 <label class="text-label-md text-on-surface-variant block">RESPONSÁVEL / EQUIPE</label>
@@ -276,7 +323,7 @@
 <span>Lens 24-70mm GMaster - SN: 8812</span>
 <button class="material-symbols-outlined text-xs hover:text-status-critical" type="button">close</button>
 </div>
-<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-sm min-w-[200px]" placeholder="Buscar por nome ou número de série..." type="text"/>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-sm min-w-0 flex-1" placeholder="Buscar por nome ou número de série..." type="text"/>
 </div>
 </div>
 </div>
@@ -304,7 +351,7 @@
 </section>
 <!-- Information Cards / Sidebar Context -->
 <section class="xl:col-span-4 space-y-gutter">
-<div class="bg-surface-elevated border border-border-subtle rounded-xl p-6 overflow-hidden relative group">
+<div class="bg-surface-elevated border border-border-subtle rounded-xl p-4 overflow-hidden relative group">
 <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
 <img class="w-48 grayscale" data-alt="Close up professional film camera lens with cinematic lighting, shallow depth of field, high-end technical photography, dark aesthetic background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4GtHXKOqe8tVgTfQWuUMCpCzvxwhfDeVSYgEeA2TbQJ0ZAMHMXOjOEoiC4QN8kmED64zbkALqyPtWmdEEQrPNDHSzboR9TSg30FsBtMjDX_53696MevKn5TOJQ1AUBKGt6O_exf1ilwTPCO_aLKwkHyE2al1-mNJ_--XNenYC5PW55Ugs5eJYMap9xju7AbtwCy5RC9ADMjWfvR6RavPckWmcnFlsd4n-wXu9LvDXbpVp7qmzM9Xorl1r-e5BendFQ_nvZWpCFjM"/>
 </div>
@@ -382,7 +429,7 @@
 </div>
 </div>
 <div class="bg-surface-elevated border border-border-subtle rounded-xl overflow-hidden">
-<div class="overflow-x-auto">
+<div class="overflow-x-auto -mx-4 md:mx-0">
 <table class="w-full text-left border-collapse">
 <thead>
 <tr class="bg-surface-container border-b border-border-subtle">
@@ -532,7 +579,7 @@
 </main>
 </div>
 <!-- BottomNavBar (Mobile only) -->
-<nav class="hidden fixed bottom-0 w-full z-50 bg-surface-container text-primary border-t border-outline-variant flex justify-around items-center h-16 px-margin-mobile w-full">
+<nav class="lg:hidden fixed bottom-0 w-full z-50 bg-surface-container text-primary border-t border-outline-variant flex justify-around items-center h-16 px-margin-mobile w-full">
 <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform duration-200">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-md text-label-md">Dashboard</span>
@@ -547,7 +594,7 @@
 </button>
 </nav>
 <!-- FAB for mobile fast action -->
-<button class="hidden fixed right-6 bottom-20 w-14 h-14 bg-primary-container text-white rounded-full flex items-center justify-center shadow-xl shadow-status-critical/30 z-[55] active:scale-90 transition-transform">
+<button class="lg:hidden fixed right-4 bottom-20 w-14 h-14 bg-primary-container text-white rounded-full flex items-center justify-center shadow-xl shadow-status-critical/30 z-[55] active:scale-90 transition-transform">
 <span class="material-symbols-outlined text-2xl">add</span>
 </button>
 <script>

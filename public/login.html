@@ -121,16 +121,63 @@
             border: 1px solid #30363D;
         }
     </style>
+<style>
+/* ── RESPONSIVE EXTRAS ── */
+@media (max-width: 767px) {
+  /* Sidebar never visible on mobile — content fills full width */
+  .md\:ml-\[280px\] { margin-left: 0 !important; }
+  .md\:flex { display: none !important; }
+
+  /* Bento cards full width stacking */
+  .glass-panel { border-radius: 0.5rem; }
+
+  /* Return item content */
+  .flex.flex-wrap.items-center.justify-between { gap: 0.5rem; }
+
+  /* Table cells — smaller text on mobile */
+  td { font-size: 12px !important; padding: 8px 10px !important; }
+  th { font-size: 9px !important; padding: 8px 10px !important; }
+
+  /* Headline XL — scale down on mobile */
+  .text-headline-xl, .font-headline-xl { font-size: 28px !important; line-height: 36px !important; }
+  .text-headline-lg { font-size: 20px !important; line-height: 28px !important; }
+
+  /* Grid col-12 items */
+  .col-span-5 { grid-column: span 12 !important; }
+  .col-span-2 { grid-column: span 6 !important; }
+  .col-span-1 { grid-column: span 6 !important; }
+
+  /* Form full width inputs */
+  input, select { font-size: 14px !important; }
+
+  /* Activity section */
+  .space-y-4 > * { margin-top: 0.75rem; }
+}
+
+@media (max-width: 479px) {
+  /* Very small screens */
+  .px-gutter { padding-left: 12px !important; padding-right: 12px !important; }
+  h2.font-headline-xl { font-size: 24px !important; }
+  .text-headline-md { font-size: 16px !important; }
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Smooth transitions */
+* { -webkit-tap-highlight-color: transparent; }
+</style>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
 <!-- Subtle animated gradient background behind the image -->
 <div class="fixed inset-0 z-0 bg-login-overlay"></div>
 <main class="relative z-10 flex-grow flex items-center justify-center p-margin-mobile md:p-gutter">
-<div class="w-full max-w-[420px] glass-panel p-gutter rounded-xl shadow-2xl flex flex-col items-center">
+<div class="w-full max-w-[420px] glass-panel p-5 md:p-gutter rounded-xl shadow-2xl flex flex-col items-center">
 <!-- Logo Section -->
 <div class="mb-stack-lg flex flex-col items-center">
-<img alt="InfoLive Logo" class="h-16 w-auto mb-stack-md object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiVdZUbCUt57HAY54UNCQoMrrXToJjrrxn4DmncbJ1x7mQDLOoAUo_CQ1iWJh9A4SMIFgSzpO33uQsNKjxD2gh8aeHqgQkivg4l3CzdeVmTeh6HjqV3rzX3pve-5oImFeFZcFbZYPbi3hzqulkUrqcu_GS9kts23iSoLKBowo1dvWgqCQZTxJToBSWMcOHRDGwG48xuNleJV3NXVnXlIypfVI5VDOqxBw2ipfzCImsMThj1iNWiKSrBEfY"/>
-<h1 class="font-headline-md text-headline-md text-center text-primary-fixed-dim">
+<img alt="InfoLive Logo" class="h-12 md:h-16 w-auto mb-3 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiVdZUbCUt57HAY54UNCQoMrrXToJjrrxn4DmncbJ1x7mQDLOoAUo_CQ1iWJh9A4SMIFgSzpO33uQsNKjxD2gh8aeHqgQkivg4l3CzdeVmTeh6HjqV3rzX3pve-5oImFeFZcFbZYPbi3hzqulkUrqcu_GS9kts23iSoLKBowo1dvWgqCQZTxJToBSWMcOHRDGwG48xuNleJV3NXVnXlIypfVI5VDOqxBw2ipfzCImsMThj1iNWiKSrBEfY"/>
+<h1 class="font-headline-md text-lg md:text-headline-md text-center text-primary-fixed-dim">
                     Gestão de Equipamentos
                 </h1>
 <p class="font-label-md text-label-md text-on-surface-variant tracking-widest uppercase mt-stack-sm">
@@ -138,7 +185,7 @@
                 </p>
 </div>
 <!-- Entrar Form -->
-<form class="w-full space-y-stack-lg" id="login-form" onsubmit="event.preventDefault(); try { window.parent.postMessage({navigate:'dashboard'},'*'); } catch(e){} ">
+<form class="w-full space-y-stack-lg" id="login-form" onsubmit="event.preventDefault(); try { window.parent.postMessage({navigate:'dashboard'},'*'); } catch(e){ window.location.href='dashboard.html'; } ">
 <div class="space-y-stack-sm">
 <label class="font-label-md text-label-md text-secondary ml-1" for="employee-id">ID DO FUNCIONÁRIO</label>
 <div class="relative flex items-center">

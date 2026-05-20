@@ -122,6 +122,53 @@
             border-radius: 2px;
         }
     </style>
+<style>
+/* ── RESPONSIVE EXTRAS ── */
+@media (max-width: 767px) {
+  /* Sidebar never visible on mobile — content fills full width */
+  .md\:ml-\[280px\] { margin-left: 0 !important; }
+  .md\:flex { display: none !important; }
+
+  /* Bento cards full width stacking */
+  .glass-panel { border-radius: 0.5rem; }
+
+  /* Return item content */
+  .flex.flex-wrap.items-center.justify-between { gap: 0.5rem; }
+
+  /* Table cells — smaller text on mobile */
+  td { font-size: 12px !important; padding: 8px 10px !important; }
+  th { font-size: 9px !important; padding: 8px 10px !important; }
+
+  /* Headline XL — scale down on mobile */
+  .text-headline-xl, .font-headline-xl { font-size: 28px !important; line-height: 36px !important; }
+  .text-headline-lg { font-size: 20px !important; line-height: 28px !important; }
+
+  /* Grid col-12 items */
+  .col-span-5 { grid-column: span 12 !important; }
+  .col-span-2 { grid-column: span 6 !important; }
+  .col-span-1 { grid-column: span 6 !important; }
+
+  /* Form full width inputs */
+  input, select { font-size: 14px !important; }
+
+  /* Activity section */
+  .space-y-4 > * { margin-top: 0.75rem; }
+}
+
+@media (max-width: 479px) {
+  /* Very small screens */
+  .px-gutter { padding-left: 12px !important; padding-right: 12px !important; }
+  h2.font-headline-xl { font-size: 24px !important; }
+  .text-headline-md { font-size: 16px !important; }
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Smooth transitions */
+* { -webkit-tap-highlight-color: transparent; }
+</style>
 </head>
 <body class="font-body-md text-body-md overflow-x-hidden">
 <!-- TopAppBar -->
@@ -144,7 +191,7 @@
 </div>
 </header>
 <!-- Sidebar (Desktop Only) -->
-<aside class="hidden md:flex h-full w-[280px] fixed left-0 top-0 z-[60] bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant dark:border-outline-variant flex-col gap-stack-md p-gutter pt-4">
+<aside class="hidden md:flex h-full w-[280px] fixed left-0 top-0 z-[60] bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant dark:border-outline-variant flex-col gap-stack-md p-gutter pt-4 overflow-y-auto">
 <div class="flex items-center gap-stack-md mb-stack-lg p-4 bg-surface-container-high rounded-xl">
 <div class="h-12 w-12 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container">
 <span class="material-symbols-outlined">admin_panel_settings</span>
@@ -181,9 +228,9 @@
 </div>
 </aside>
 <!-- Main Canvas -->
-<main class="pt-6 pb-32 px-gutter md:ml-[280px] max-w-container-max mx-auto">
+<main class="pt-4 pb-24 px-4 md:px-gutter md:ml-[280px] max-w-container-max mx-auto overflow-x-hidden">
 <!-- Summary Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
 <!-- Card 1 -->
 <div class="glass-panel p-gutter rounded-xl flex flex-col justify-between group hover:border-tertiary transition-all">
 <div class="flex justify-between items-start">
@@ -223,7 +270,7 @@
 </div>
 <!-- Section: Proximos Retornos -->
 <section class="mb-stack-lg">
-<div class="flex justify-between items-end mb-stack-md">
+<div class="flex justify-between items-end mb-3 flex-wrap gap-2">
 <div>
 <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Próximos Retornos</h3>
 <p class="text-on-surface-variant text-body-sm">Logística de entrada para as próximas 48 horas</p>
@@ -232,8 +279,8 @@
 </div>
 <div class="space-y-stack-sm">
 <!-- Return Item 1 -->
-<div class="glass-panel p-4 flex flex-wrap items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
-<div class="flex items-center gap-4 min-w-[200px]">
+<div class="glass-panel p-3 md:p-4 flex flex-wrap items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 min-w-0">
 <div class="h-10 w-10 bg-surface-container-highest rounded border border-border-subtle flex items-center justify-center">
 <span class="material-symbols-outlined text-on-surface-variant">videocam</span>
 </div>
@@ -257,8 +304,8 @@
 </div>
 </div>
 <!-- Return Item 2 -->
-<div class="glass-panel p-4 flex flex-wrap items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all border-l-4 border-l-status-critical">
-<div class="flex items-center gap-4 min-w-[200px]">
+<div class="glass-panel p-3 md:p-4 flex flex-wrap items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all border-l-4 border-l-status-critical">
+<div class="flex items-center gap-4 min-w-0">
 <div class="h-10 w-10 bg-surface-container-highest rounded border border-border-subtle flex items-center justify-center">
 <span class="material-symbols-outlined text-status-critical">podium</span>
 </div>
@@ -280,8 +327,8 @@
 </div>
 </div>
 <!-- Return Item 3 -->
-<div class="glass-panel p-4 flex flex-wrap items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
-<div class="flex items-center gap-4 min-w-[200px]">
+<div class="glass-panel p-3 md:p-4 flex flex-wrap items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 min-w-0">
 <div class="h-10 w-10 bg-surface-container-highest rounded border border-border-subtle flex items-center justify-center">
 <span class="material-symbols-outlined text-on-surface-variant">mic_external_on</span>
 </div>
@@ -305,7 +352,7 @@
 </div>
 </section>
 <!-- Dynamic Content Area -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-md">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 <div class="glass-panel rounded-xl overflow-hidden">
 <div class="p-4 border-b border-border-subtle flex justify-between items-center bg-surface-container">
 <h4 class="font-label-md uppercase tracking-wider text-on-surface-variant">Atividade Recente</h4>
@@ -348,21 +395,21 @@
 </div>
 </main>
 <!-- FAB: Nova Saída -->
-<button class="fixed bottom-24 right-gutter md:bottom-8 z-[70] h-14 w-14 bg-primary-container text-on-primary-container rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-transform duration-200 group overflow-hidden">
+<button class="fixed bottom-20 right-4 md:bottom-8 md:right-6 z-[70] h-14 w-14 bg-primary-container text-on-primary-container rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-transform duration-200 group overflow-hidden">
 <span class="material-symbols-outlined text-[32px] group-hover:rotate-90 transition-transform duration-300">add</span>
 <span class="absolute right-16 bg-primary-container text-white px-4 py-2 rounded-lg text-label-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Nova Saída</span>
 </button>
 <!-- BottomNavBar (Mobile Only) -->
-<nav class="hidden fixed bottom-0 w-full z-50 bg-surface-container dark:bg-surface-container border-t border-outline-variant dark:border-outline-variant flex justify-around items-center h-16 px-margin-mobile w-full">
-<a class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold active:scale-95 transition-transform duration-200" href="#">
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container dark:bg-surface-container border-t border-outline-variant dark:border-outline-variant flex justify-around items-center h-16 px-margin-mobile w-full">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold active:scale-95 transition-transform duration-200" href="#" onclick="window.parent.postMessage({navigate:'dashboard'},'*');return false;">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
 <span class="font-label-md text-label-md">Dashboard</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-95 transition-transform duration-200" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-95 transition-transform duration-200" href="#" onclick="window.parent.postMessage({navigate:'inventory'},'*');return false;">
 <span class="material-symbols-outlined">inventory_2</span>
 <span class="font-label-md text-label-md">Inventário</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-95 transition-transform duration-200" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-95 transition-transform duration-200" href="#" onclick="window.parent.postMessage({navigate:'movements'},'*');return false;">
 <span class="material-symbols-outlined">sync_alt</span>
 <span class="font-label-md text-label-md">Movimentações</span>
 </a>

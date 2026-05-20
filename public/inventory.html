@@ -130,7 +130,54 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  </head>
+  <style>
+/* ── RESPONSIVE EXTRAS ── */
+@media (max-width: 767px) {
+  /* Sidebar never visible on mobile — content fills full width */
+  .md\:ml-\[280px\] { margin-left: 0 !important; }
+  .md\:flex { display: none !important; }
+
+  /* Bento cards full width stacking */
+  .glass-panel { border-radius: 0.5rem; }
+
+  /* Return item content */
+  .flex.flex-wrap.items-center.justify-between { gap: 0.5rem; }
+
+  /* Table cells — smaller text on mobile */
+  td { font-size: 12px !important; padding: 8px 10px !important; }
+  th { font-size: 9px !important; padding: 8px 10px !important; }
+
+  /* Headline XL — scale down on mobile */
+  .text-headline-xl, .font-headline-xl { font-size: 28px !important; line-height: 36px !important; }
+  .text-headline-lg { font-size: 20px !important; line-height: 28px !important; }
+
+  /* Grid col-12 items */
+  .col-span-5 { grid-column: span 12 !important; }
+  .col-span-2 { grid-column: span 6 !important; }
+  .col-span-1 { grid-column: span 6 !important; }
+
+  /* Form full width inputs */
+  input, select { font-size: 14px !important; }
+
+  /* Activity section */
+  .space-y-4 > * { margin-top: 0.75rem; }
+}
+
+@media (max-width: 479px) {
+  /* Very small screens */
+  .px-gutter { padding-left: 12px !important; padding-right: 12px !important; }
+  h2.font-headline-xl { font-size: 24px !important; }
+  .text-headline-md { font-size: 16px !important; }
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Smooth transitions */
+* { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
 <body class="font-body-md text-body-md custom-scrollbar">
 <!-- TopAppBar -->
 <header style="display:none" class="fixed top-0 w-full z-50 glass-header border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
@@ -157,7 +204,7 @@
 </div>
 </header>
 <!-- NavigationDrawer (Sidebar Desktop) -->
-<aside class="hidden md:flex h-full w-[280px] fixed left-0 top-0 z-[40] pt-4 bg-surface-container-low border-r border-outline-variant flex-col gap-stack-md p-gutter">
+<aside class="hidden md:flex h-full w-[280px] fixed left-0 top-0 z-[40] pt-4 bg-surface-container-low overflow-y-auto border-r border-outline-variant flex-col gap-stack-md p-gutter">
 <div class="flex flex-col gap-2 mb-stack-lg">
 <p class="text-on-surface-variant font-label-md text-label-md px-4 opacity-50 uppercase tracking-widest">Menu Principal</p>
 <nav class="flex flex-col gap-1">
@@ -194,14 +241,14 @@
 </div>
 </aside>
 <!-- Main Content Area -->
-<main class="md:ml-[280px] pt-4 pb-20 md:pb-8 px-margin-mobile md:px-margin-desktop min-h-screen">
+<main class="md:ml-[280px] pt-2 pb-20 md:pb-8 px-3 md:px-10 min-h-screen overflow-x-hidden">
 <!-- Dashboard Header & Quick Stats -->
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-on-background">Inventário Overview</h2>
+<h2 class="font-headline-lg text-xl md:text-headline-lg text-on-background">Inventário Overview</h2>
 <p class="text-on-surface-variant font-body-md text-body-md mt-1">Gerencie e rastreie todo o equipamento de produção.</p>
 </div>
-<div class="flex gap-stack-md items-center overflow-x-auto no-scrollbar py-1">
+<div class="flex gap-2 items-center overflow-x-auto py-1 scrollbar-hide">
 <button class="shrink-0 px-4 py-2 rounded-lg bg-surface-container-high border border-primary text-primary font-label-md text-label-md flex items-center gap-2">
                     TODOS
                 </button>
@@ -217,7 +264,7 @@
 </div>
 </div>
 <!-- Filter & Utility Bar -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-stack-md mb-stack-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
 <div class="col-span-1 md:col-span-1 p-stack-md bg-surface-container-low border border-border-subtle rounded-xl flex flex-col justify-center">
 <span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest mb-1">Total do Acervo</span>
 <span class="text-headline-md font-headline-md text-primary">1,284</span>
@@ -248,7 +295,7 @@
 <!-- List Items -->
 <div class="divide-y divide-border-subtle">
 <!-- Item 1 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-gutter px-4 py-4 items-center hover:bg-surface-container transition-colors group">
 <div class="col-span-5 flex items-center gap-4">
 <div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A professional high-end cinema camera body with matte black finish and intricate technical dials, resting on a dark velvet surface. The lighting is cinematic and low-key with sharp highlights, reflecting the InfoLive Brasil professional dark theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPS8f5OCWU5BL-PBM1mvoy7g2LzfEV8ut9PaJUub2bpwaYuc4RWS5WpNU8TQjEmVjdS5ojn4WhFeQRrSNLe-RfFKGjMKMQBJcLVRzDZDA-1WGPWUsG75Svz7-zTw5Z60pC5siWx1JO-HNOpgyqkbvJ2Nz8A1DSNc_MD6BKNWOngKP8UhQS3o1fTdpC9ZKRzZaFIG9iGtmeTJsSH6_uRkrlc3Bv3PffYvlMjxUbxX_KKxHgfG1gJXCV-ShqxLJVeu6prqT1wWGvrdc"/>
@@ -278,7 +325,7 @@
 </div>
 </div>
 <!-- Item 2 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-gutter px-4 py-4 items-center hover:bg-surface-container transition-colors group">
 <div class="col-span-5 flex items-center gap-4">
 <div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Professional cardioid condenser microphone with a mesh pop filter, positioned in a high-tech studio environment with dark blue and red ambient lighting. Minimalist aesthetic, high-contrast, professional stock inventory photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3m1D1wDujPfR-e-CCygL8V6Cf2lGyd5PbapdUOBrFInPw299HcfccUhzA2laP_Q3i1kWe3MDpBFK2O-iL7pTx9YfG6yNG0PQbSLBuyIICO-mBsJuvOf_EtHFs9HEcylJSzCBw9B9anGMq4lpI4MoBuQ0QhidqzsFoOhoAOvfdFtgFMntZFBFS0zWMQWVTkg26rTfMlXfVnmJA_i9_SgmHn1PuN9lzMfxD3Um2mVziTPgl__N3rah5prSX92jP0-FBIZxd-FNmomo"/>
@@ -308,7 +355,7 @@
 </div>
 </div>
 <!-- Item 3 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-gutter px-4 py-4 items-center hover:bg-surface-container transition-colors group">
 <div class="col-span-5 flex items-center gap-4">
 <div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A large studio LED panel light with barn doors, glowing with a soft daylight temperature. The background is a dark production stage. The image has a clean, professional, industrial look with deep shadows and sharp edge lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFrkYeqXVA6vUf04KwW6cHya8IoeIvbfjstMSPBenCwTejiimg7OdfXZ7ZZqBL6afe3bNpq_SjFUUtl1UzWYnGurZyQzImTvsV78-M_TBEq_nxp3DrVkvagyZSlep8u-L7YjcImQSPCVL17WNJcKYEXcpu5pTc8q2ZKN4CJ0nCA3tfcTEgZwI-ETq94-9OyjOuX3JMQju4y_pT1IbOfGiDRWqhkVGfG9ZrDx67shcxQlb3qQy73HAWJFm9Ik9d-EoqkA-SvX27FEg"/>
@@ -338,7 +385,7 @@
 </div>
 </div>
 <!-- Item 4 (Mobile view demonstration) -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-gutter px-gutter py-4 items-center hover:bg-surface-container transition-colors group">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-gutter px-4 py-4 items-center hover:bg-surface-container transition-colors group">
 <div class="col-span-5 flex items-center gap-4">
 <div class="w-12 h-12 rounded bg-surface-container-lowest border border-border-subtle flex-shrink-0 overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A ruggedized professional field monitor for film production with multiple cable ports visible on the side. The screen shows a color calibration pattern. The environment is dark, emphasizing the metallic textures and professional build quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKv2aOeAVJQSHRoOTPmD3kfeenaA67J1uIWO2OQJspCtBbNNuXFqhQlQCzH8F6AIEwedC12E0zcwp2BiuZtcHvj4-xZCre1_fEXP9AOMy_7x0aZ7XDalURTOAjDuE34J9pOLRPdN0drUw_ldWPqqI35-WBEghuDnj7Ob24_VFkbe6UkmrEli6it3_J5D_5ruOsKGGfXS5_zfL7EcrVWFOECxemNKrVFCMW-TBd877qOvLwGjewN2aNtWQAxfXgDkO9Ctato49dCcA"/>
@@ -370,7 +417,7 @@
 </div>
 </div>
 <!-- Pagination / Footer Ações -->
-<div class="flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="flex flex-col sm:flex-row justify-between items-center gap-3 mt-4">
 <p class="text-on-surface-variant font-body-sm text-body-sm">Exibindo 4 de 1.284 itens</p>
 <div class="flex items-center gap-2">
 <button class="p-2 rounded border border-border-subtle hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
