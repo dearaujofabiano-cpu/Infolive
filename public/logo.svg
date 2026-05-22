@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- INFO em branco bold -->
+  <text x="4" y="52" font-family="Arial Black,Arial,sans-serif" font-size="52" font-weight="900" fill="#FFFFFF" letter-spacing="-1">INFO</text>
+
+  <!-- L — caixa vermelha -->
+  <rect x="162" y="2" width="36" height="54" rx="4" fill="#E8202A"/>
+  <text x="166" y="47" font-family="Arial Black,Arial,sans-serif" font-size="48" font-weight="900" fill="#FFFFFF">L</text>
+
+  <!-- I — caixa amarela -->
+  <rect x="200" y="2" width="28" height="54" rx="4" fill="#F5C800"/>
+  <text x="206" y="47" font-family="Arial Black,Arial,sans-serif" font-size="48" font-weight="900" fill="#FFFFFF">I</text>
+
+  <!-- V — caixa azul -->
+  <rect x="230" y="2" width="40" height="54" rx="4" fill="#3A7FD5"/>
+  <text x="232" y="47" font-family="Arial Black,Arial,sans-serif" font-size="48" font-weight="900" fill="#FFFFFF">V</text>
+
+  <!-- E — caixa verde -->
+  <rect x="272" y="2" width="44" height="54" rx="4" fill="#3DAA4C"/>
+  <text x="276" y="47" font-family="Arial Black,Arial,sans-serif" font-size="48" font-weight="900" fill="#FFFFFF">E</text>
+
+  <!-- Subtítulo -->
+  <text x="4" y="74" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#CCCCCC" letter-spacing="0.3">Films | Videos | WebTV | Webcast</text>
+</svg>
